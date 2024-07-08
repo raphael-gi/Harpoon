@@ -1,18 +1,17 @@
 import * as vscode from 'vscode';
-
+import show from "./show";
+import add from './add';
+import { MemFS } from './MemFS';
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log("heeeelo");
+  const memfs = new MemFS();
 
-  const disposable = vscode.commands.registerCommand('extension.harpoon', () => {
-    vscode.window.showInformationMessage(`Your version is ${vscode.version}`);
-    const editor = vscode.window.activeTextEditor;
-    if (editor) {
-      vscode.window.showInformationMessage(`File: ${editor.document.fileName}`);
-    } else {
-      vscode.window.showInformationMessage("No file open");
-    }
-  })
+  vscode.workspace.registerFileSystemProvider('harpoonfiles', memfs);
 
-  context.subscriptions.push(disposable);
+  const harpoonAdd = vscode.commands.registerCommand('harpoon.add', () => add(context));
+  const harpoonShow = vscode.commands.registerCommand('harpoon.show', () => show(context));
+
+  context.subscriptions.push(harpoonAdd);
+  context.subscriptions.push(harpoonShow);
 }
+

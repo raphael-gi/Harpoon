@@ -11,9 +11,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.harpoon",
-        "title": "Harpoon"
+        "command": "harpoon.add",
+        "title": "Add Harpoon"
+      },
+      {
+        "command": "harpoon.show",
+        "title": "Show Harpoons"
       }
+
     ]
   },
   "scripts": {
