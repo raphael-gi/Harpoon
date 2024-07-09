@@ -36,17 +36,14 @@ export default class MemFS implements vscode.FileSystemProvider {
     const state = this.context.workspaceState;
     const rows = content.toString().split("\n");
 
-    state.keys().forEach((key) => state.update(key, undefined));
-
     for (let i = 0; i < rows.length; i++) {
       state.update(`${i}`, rows[i]);
     }
 
-    /*
-    for (let i = rows.length; i < state.keys().length; i++) {
+    const amountOfKeys = state.keys().length;
+    for (let i = rows.length; i < amountOfKeys; i++) {
       state.update(`${i}`, undefined);
     }
-    */
 
     if (!options.create) {
       vscode.commands.executeCommand('workbench.action.revertAndCloseActiveEditor');
