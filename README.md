@@ -1,3 +1,2 @@
-# Todo
-Save up to 8 paths for every root directory
-
+# VSCode Harpoon
+VSCode version of [harpoon](https://github.com/ThePrimeagen/harpoon) made by [ThePrimeagen](https://www.youtube.com/@ThePrimeagen).
