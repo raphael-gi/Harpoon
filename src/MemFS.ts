@@ -13,15 +13,15 @@ export default class MemFS implements vscode.FileSystemProvider {
     this.onDidChangeFile = this.emitter.event;
   }
 
-	stat(uri: vscode.Uri): vscode.FileStat {
+	stat(_: vscode.Uri): vscode.FileStat {
     return { type: vscode.FileType.File, ctime: 0, mtime: 0, size: 0 };
   }
 
-	readDirectory(uri: vscode.Uri): [string, vscode.FileType][] {
+	readDirectory(_: vscode.Uri): [string, vscode.FileType][] {
     return [];
   }
 
-	readFile(uri: vscode.Uri): Uint8Array {
+	readFile(_: vscode.Uri): Uint8Array {
     return this.harpoonFile;
   }
 
@@ -45,14 +45,13 @@ export default class MemFS implements vscode.FileSystemProvider {
     }
   }
 
-	rename(oldUri: vscode.Uri, newUri: vscode.Uri, options: { overwrite: boolean }): void { }
+	rename(_: vscode.Uri, __: vscode.Uri, ___: { overwrite: boolean }): void { }
 
-	delete(uri: vscode.Uri): void { }
+	delete(_: vscode.Uri): void { }
 
-	createDirectory(uri: vscode.Uri): void { }
+	createDirectory(_: vscode.Uri): void { }
 
-  watch(uri: vscode.Uri, options: { readonly recursive: boolean; readonly excludes: readonly string[]; }): vscode.Disposable {
+  watch(_: vscode.Uri, __: { readonly recursive: boolean; readonly excludes: readonly string[]; }): vscode.Disposable {
     return new vscode.Disposable(() => {});
   }
-
 }
