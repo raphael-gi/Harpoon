@@ -14,12 +14,7 @@ export default class MemFS implements vscode.FileSystemProvider {
   }
 
 	stat(uri: vscode.Uri): vscode.FileStat {
-    return {
-      type: vscode.FileType.File,
-      ctime: Date.now(),
-      mtime: Date.now(),
-      size: this.harpoonFile.length
-    }
+    return { type: vscode.FileType.File, ctime: 0, mtime: 0, size: 0 };
   }
 
 	readDirectory(uri: vscode.Uri): [string, vscode.FileType][] {
@@ -30,7 +25,7 @@ export default class MemFS implements vscode.FileSystemProvider {
     return this.harpoonFile;
   }
 
-	writeFile(uri: vscode.Uri, content: Uint8Array, options: { create: boolean, overwrite: boolean }): void {
+  writeFile(uri: vscode.Uri, content: Uint8Array, options: { create: boolean, overwrite: boolean, atomic: boolean, unlock: boolean }): void {
     this.harpoonFile = content;
     this.emitter.fire([{ type: vscode.FileChangeType.Changed, uri }]);
     const state = this.context.workspaceState;
@@ -45,7 +40,7 @@ export default class MemFS implements vscode.FileSystemProvider {
       state.update(`${i}`, undefined);
     }
 
-    if (!options.create) {
+    if (options.atomic === false && options.unlock === false) {
       vscode.commands.executeCommand('workbench.action.revertAndCloseActiveEditor');
     }
   }
@@ -57,7 +52,6 @@ export default class MemFS implements vscode.FileSystemProvider {
 	createDirectory(uri: vscode.Uri): void { }
 
   watch(uri: vscode.Uri, options: { readonly recursive: boolean; readonly excludes: readonly string[]; }): vscode.Disposable {
-    // Not implemented yet
     return new vscode.Disposable(() => {});
   }
 
