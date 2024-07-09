@@ -17,9 +17,27 @@
       {
         "command": "harpoon.show",
         "title": "Show Harpoons"
+      },
+      {
+        "command": "harpoon.yoink",
+        "title": "Yoink a file"
       }
-
-    ]
+    ],
+    "configuration": {
+      "title": "Harpoon",
+      "properties": {
+        "harpoon.keybindings": {
+          "type": "array",
+          "default": [],
+          "description": "Keybindings"
+        },
+        "harpoon.listkey": {
+          "type": ["string", "null"],
+          "default": null,
+          "description": "Specify what sort of keyevent should be pressed to open the list"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
