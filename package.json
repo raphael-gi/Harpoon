@@ -8,6 +8,7 @@
   "license": "ISC",
   "description": "",
   "main": "./out/extension.js",
+  "repository": "https://github.com/raphael-gi/Harpoon",
   "contributes": {
     "commands": [
       {

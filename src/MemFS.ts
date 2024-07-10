@@ -13,8 +13,13 @@ export default class MemFS implements vscode.FileSystemProvider {
     this.onDidChangeFile = this.emitter.event;
   }
 
-	stat(_: vscode.Uri): vscode.FileStat {
-    return { type: vscode.FileType.File, ctime: 0, mtime: 0, size: 0 };
+  stat(_: vscode.Uri): vscode.FileStat {
+    return {
+      type: vscode.FileType.File,
+      ctime: Date.now(),
+      mtime: Date.now(),
+      size: this.harpoonFile.length
+    };
   }
 
 	readDirectory(_: vscode.Uri): [string, vscode.FileType][] {
