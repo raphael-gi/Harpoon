@@ -1,14 +1,19 @@
 {
-  "name": "harpoon",
+  "name": "harpoon-kenji",
+  "displayName": "Harpoon Kenji",
+  "description": "Yoink files inside of an inferior editor",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.74.0"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "main": "./out/extension.js",
-  "repository": "https://github.com/raphael-gi/Harpoon",
+  "publisher": "Kenji",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raphael-gi/Harpoon"
+  },
   "contributes": {
     "commands": [
       {
