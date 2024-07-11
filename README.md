@@ -1,7 +1,12 @@
 # Harpoon
 VSCode version of [harpoon](https://github.com/ThePrimeagen/harpoon) made by [ThePrimeagen](https://www.youtube.com/@ThePrimeagen).
 
-# Setup
+## What does harpoon do?
+- Open files of your choice immediately by pressing a single key
+- Keep your hands on the keyboard and away from your mouse
+- Enhance your vim experience inside of vscode
+
+## Setup
 ``` JSON
 {
     "key": "ctrl+e",
