@@ -23,3 +23,11 @@ VSCode version of [harpoon](https://github.com/ThePrimeagen/harpoon) made by [Th
     "args": [2]
 }
 ```
+``` JSON
+"vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["harpoon.add"]
+    }
+]
+```
